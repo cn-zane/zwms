@@ -1,0 +1,16 @@
+package com.zane.wms.pojo.dto;
+
+import com.zane.common.core.domain.BaseAudit;
+import lombok.Data;
+/**
+ * 仓库 DTO 对象
+ *
+ * @author zane
+ */
+@Data
+public class WarehouseDTO extends BaseAudit {
+    private Long id;
+    private String warehouseNo;
+    private String warehouseName;
+    private String remark;
+}

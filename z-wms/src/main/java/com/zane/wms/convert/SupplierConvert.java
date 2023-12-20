@@ -1,0 +1,30 @@
+package com.zane.wms.convert;
+
+import com.zane.wms.pojo.dto.SupplierDTO;
+import com.zane.wms.pojo.vo.SupplierVO;
+import org.mapstruct.Mapper;
+import com.zane.wms.domain.Supplier;
+
+import java.util.List;
+/**
+ * 供应商  DO <=> DTO <=> VO / BO / Query
+ *
+ * @author zane
+ */
+@Mapper(componentModel = "spring")
+public interface SupplierConvert  {
+
+    /**
+     * @param source DO
+     * @return DTO
+     */
+    SupplierDTO do2dto(Supplier source);
+
+    /**
+     * @param source DTO
+     * @return DO
+     */
+    Supplier dto2do(SupplierDTO source);
+
+    List<SupplierVO> dos2vos(List<Supplier> list);
+}
