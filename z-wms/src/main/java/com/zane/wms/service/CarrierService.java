@@ -1,16 +1,19 @@
 package com.zane.wms.service;
 
-import java.util.List;
 import java.time.LocalDateTime;
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
-import com.zane.wms.pojo.query.CarrierQuery;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.data.domain.Pageable;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import com.zane.wms.mapper.CarrierMapper;
 import com.zane.wms.domain.Carrier;
+import com.zane.wms.pojo.query.CarrierQuery;
+
+import javax.annotation.Resource;
 
 /**
  * 承运商Service业务层处理
@@ -20,7 +23,7 @@ import com.zane.wms.domain.Carrier;
  */
 @Service
 public class CarrierService {
-    @Autowired
+    @Resource
     private CarrierMapper carrierMapper;
 
     /**

@@ -2,12 +2,12 @@ package com.zane.wms.mapper;
 
 import java.util.List;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zane.wms.domain.Carrier;
 import org.apache.ibatis.annotations.Param;
+import com.zane.wms.domain.Carrier;
 
 /**
  * 承运商Mapper接口
- *
+ * 
  * @author zane
  */
 public interface CarrierMapper extends BaseMapper<Carrier> {

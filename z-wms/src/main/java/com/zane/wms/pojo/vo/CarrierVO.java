@@ -1,8 +1,9 @@
 package com.zane.wms.pojo.vo;
 
+import java.time.LocalDateTime;
+
 import com.zane.common.annotation.Excel;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.zane.common.core.domain.BaseAudit;
 import lombok.Data;
 /**
  * 承运商 数据视图对象
@@ -10,17 +11,25 @@ import lombok.Data;
  * @author zane
  */
 @Data
-public class CarrierVO extends BaseAudit {
+public class CarrierVO  {
    /** ID */
     private Long id;
+   /** 创建人 */
+    private String createBy;
+   /** 创建时间 */
+    private LocalDateTime createTime;
+   /** 修改人 */
+    private String updateBy;
+   /** 修改时间 */
+    private LocalDateTime updateTime;
    /** 承运商编号 */
     @Excel(name = "承运商编号")
     private String carrierNo;
    /** 承运商名称 */
     @Excel(name = "承运商名称")
     private String carrierName;
-   /** 承运商地址 */
-    @Excel(name = "承运商地址")
+   /** 地址 */
+    @Excel(name = "地址")
     private String address;
    /** 手机号 */
     @Excel(name = "手机号")
