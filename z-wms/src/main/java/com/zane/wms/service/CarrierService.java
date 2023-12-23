@@ -6,14 +6,14 @@ import java.util.List;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
 import javax.annotation.Resource;
+
+import com.zane.common.utils.SecurityUtils;
 import org.springframework.data.domain.Pageable;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import com.zane.wms.mapper.CarrierMapper;
 import com.zane.wms.domain.Carrier;
 import com.zane.wms.pojo.query.CarrierQuery;
-
-import javax.annotation.Resource;
 
 /**
  * 承运商Service业务层处理
@@ -92,6 +92,7 @@ public class CarrierService {
      */
     public int insert(Carrier carrier) {
         carrier.setDelFlag(0);
+        carrier.setCreateBy(SecurityUtils.getUsername());
         carrier.setCreateTime(LocalDateTime.now());
         return carrierMapper.insert(carrier);
     }
@@ -103,6 +104,8 @@ public class CarrierService {
      * @return 结果
      */
     public int update(Carrier carrier) {
+        carrier.setUpdateBy(SecurityUtils.getUsername());
+        carrier.setUpdateTime(LocalDateTime.now());
         return carrierMapper.updateById(carrier);
     }
 

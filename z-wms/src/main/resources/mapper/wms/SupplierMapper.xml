@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zane.wms.mapper.SupplierMapper">
+    
+    <resultMap type="Supplier" id="SupplierResult">
+        <result property="id" column="id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="supplierNo" column="supplier_no"/>
+        <result property="supplierName" column="supplier_name"/>
+        <result property="bankName" column="bank_name"/>
+        <result property="bankAccount" column="bank_account"/>
+        <result property="accountPayable" column="account_payable"/>
+        <result property="address" column="address"/>
+        <result property="mobile" column="mobile"/>
+        <result property="tel" column="tel"/>
+        <result property="contact" column="contact"/>
+        <result property="level" column="level"/>
+        <result property="email" column="email"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <sql id="selectSupplierVo">
+        select id, create_by, create_time, update_by, update_time, supplier_no, supplier_name, bank_name, bank_account, account_payable, address, mobile, tel, contact, level, email, del_flag, remark  from wms_base_supplier
+    </sql>
+
+    <select id="selectByEntity" parameterType="Supplier" resultMap="SupplierResult">
+        <include refid="selectSupplierVo"/>
+        <where>  
+            <if test="supplierNo != null  and supplierNo != ''"> and supplier_no = #{supplierNo}</if>
+            <if test="supplierName != null  and supplierName != ''"> and supplier_name like concat('%', #{supplierName}, '%')</if>
+            <if test="bankName != null  and bankName != ''"> and bank_name like concat('%', #{bankName}, '%')</if>
+            <if test="bankAccount != null  and bankAccount != ''"> and bank_account = #{bankAccount}</if>
+            <if test="accountPayable != null "> and account_payable = #{accountPayable}</if>
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="mobile != null  and mobile != ''"> and mobile = #{mobile}</if>
+            <if test="tel != null  and tel != ''"> and tel = #{tel}</if>
+            <if test="contact != null  and contact != ''"> and contact = #{contact}</if>
+            <if test="level != null  and level != ''"> and level = #{level}</if>
+            <if test="email != null  and email != ''"> and email = #{email}</if>
+        </where>
+    </select>
+
+    <update id="updateDelFlagByIds">
+        update wms_base_supplier set del_flag=1
+        <where>
+            id in <foreach collection="ids" open="(" item="it" close=")" separator=",">#{it}</foreach>
+        </where>
+    </update>
+</mapper>
