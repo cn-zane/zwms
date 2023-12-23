@@ -12,7 +12,7 @@ import $date;
 #end
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.data.domain.Pageable;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ import #evaluate(${_fullClass.query});
  */
 @Service
 public class ${ClassName}Service {
-    @Autowired
+    @Resource
     private ${_className.mapper} ${className}Mapper;
 
     /**

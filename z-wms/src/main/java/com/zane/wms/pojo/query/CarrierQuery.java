@@ -1,5 +1,6 @@
 package com.zane.wms.pojo.query;
 
+import java.time.LocalDateTime;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -18,7 +19,7 @@ public class CarrierQuery {
     @ApiModelProperty("承运商名称 精确匹配")
     private String carrierNameLike;
 
-    @ApiModelProperty("承运商地址 精确匹配")
+    @ApiModelProperty("地址 精确匹配")
     private String address;
 
     @ApiModelProperty("手机号 精确匹配")

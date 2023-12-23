@@ -67,7 +67,7 @@
 	<logger name="com.zane" level="info" />
 	<!-- Spring日志级别控制  -->
 	<logger name="org.springframework" level="warn" />
-    <logger name="com.zane.wms.mapper" level="debug" />
+    <logger name="com.zane.wms2.mapper" level="debug" />
     <logger name="com.zane.demo.mapper" level="debug" />
     <logger name="com.zane.framework.aspectj.LoggingAspect" level="info" />
     <root level="info">

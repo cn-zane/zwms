@@ -16,7 +16,7 @@ import com.zane.system.mapper.SysRoleMapper;
 import com.zane.system.mapper.SysRoleMenuMapper;
 import com.zane.system.mapper.SysUserRoleMapper;
 import com.zane.system.service.ISysRoleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,16 +30,16 @@ import java.util.*;
 @Service
 public class SysRoleServiceImpl implements ISysRoleService
 {
-    @Autowired
+    @Resource
     private SysRoleMapper roleMapper;
 
-    @Autowired
+    @Resource
     private SysRoleMenuMapper roleMenuMapper;
 
-    @Autowired
+    @Resource
     private SysUserRoleMapper userRoleMapper;
 
-    @Autowired
+    @Resource
     private SysRoleDeptMapper roleDeptMapper;
 
     /**

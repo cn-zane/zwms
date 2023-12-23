@@ -10,7 +10,7 @@ import com.zane.common.utils.SecurityUtils;
 import com.zane.generator.service.IGenTableColumnService;
 import com.zane.generator.service.IGenTableService;
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,10 +39,10 @@ import com.zane.generator.domain.GenTableColumn;
 @RequestMapping("/tool/gen")
 public class GenController extends BaseController
 {
-    @Autowired
+    @Resource
     private IGenTableService genTableService;
 
-    @Autowired
+    @Resource
     private IGenTableColumnService genTableColumnService;
 
     /**

@@ -13,7 +13,7 @@ import com.zane.framework.manager.AsyncManager;
 import com.zane.framework.manager.factory.AsyncFactory;
 import com.zane.system.service.ISysConfigService;
 import com.zane.system.service.ISysUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -25,13 +25,13 @@ import org.springframework.util.StringUtils;
 @Component
 public class SysRegisterService
 {
-    @Autowired
+    @Resource
     private ISysUserService userService;
 
-    @Autowired
+    @Resource
     private ISysConfigService configService;
 
-    @Autowired
+    @Resource
     private RedisCache redisCache;
 
     /**

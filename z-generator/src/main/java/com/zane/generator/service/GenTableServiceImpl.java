@@ -27,7 +27,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,11 +51,11 @@ import java.util.zip.ZipOutputStream;
 @Service
 public class GenTableServiceImpl implements IGenTableService {
     private static final Logger log = LoggerFactory.getLogger(GenTableServiceImpl.class);
-    @Autowired
+    @Resource
     private GenTableMapper genTableMapper;
-    @Autowired
+    @Resource
     private GenTableColumnMapper genTableColumnMapper;
-    @Autowired
+    @Resource
     private GenContext genContext;
 
     /**
@@ -522,9 +522,9 @@ public class GenTableServiceImpl implements IGenTableService {
     @Data
     @Component
     class GenContext {
-        @Autowired
+        @Resource
         GenPathConfig pathConfig;
-        @Autowired
+        @Resource
         GenConfig genConfig;
         Map<String, String> prop2path;
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.zane.system.service.ISysDictDataService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.zane.common.core.domain.entity.SysDictData;
 import com.zane.common.utils.DictUtils;
@@ -19,7 +19,7 @@ import com.zane.system.mapper.SysDictDataMapper;
 @Service
 public class SysDictDataServiceImpl implements ISysDictDataService
 {
-    @Autowired
+    @Resource
     private SysDictDataMapper dictDataMapper;
 
     /**

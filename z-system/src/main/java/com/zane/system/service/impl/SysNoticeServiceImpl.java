@@ -5,7 +5,7 @@ import java.util.List;
 import com.zane.system.domain.SysNotice;
 import com.zane.system.mapper.SysNoticeMapper;
 import com.zane.system.service.ISysNoticeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysNoticeServiceImpl implements ISysNoticeService
 {
-    @Autowired
+    @Resource
     private SysNoticeMapper noticeMapper;
 
     /**

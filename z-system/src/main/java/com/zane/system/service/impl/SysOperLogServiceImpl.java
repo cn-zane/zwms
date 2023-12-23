@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.zane.system.mapper.SysOperLogMapper;
 import com.zane.system.service.ISysOperLogService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.zane.system.domain.SysOperLog;
 
@@ -16,7 +16,7 @@ import com.zane.system.domain.SysOperLog;
 @Service
 public class SysOperLogServiceImpl implements ISysOperLogService
 {
-    @Autowired
+    @Resource
     private SysOperLogMapper operLogMapper;
 
     /**

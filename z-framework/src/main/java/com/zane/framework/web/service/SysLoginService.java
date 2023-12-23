@@ -23,7 +23,7 @@ import com.zane.system.service.ISysConfigService;
 import com.zane.system.service.ISysRoleService;
 import com.zane.system.service.ISysUserService;
 import com.zane.system.service.PhoneCodeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -41,21 +41,21 @@ import java.util.List;
  */
 @Component
 public class SysLoginService {
-    @Autowired
+    @Resource
     private TokenService tokenService;
     @Resource
     private AuthenticationManager authenticationManager;
-    @Autowired
+    @Resource
     private RedisCache redisCache;
-    @Autowired
+    @Resource
     private ISysUserService userService;
-    @Autowired
+    @Resource
     private ISysConfigService configService;
-    @Autowired
+    @Resource
     private PhoneCodeService phoneCodeService;
-    @Autowired
+    @Resource
     private SysPermissionService permissionService;
-    @Autowired
+    @Resource
     private ISysRoleService sysRoleService;
 
     /**

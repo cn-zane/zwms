@@ -2,7 +2,7 @@ package com.zane.framework.web.service;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 import com.zane.common.core.domain.entity.SysUser;
 import com.zane.system.service.ISysMenuService;
@@ -16,10 +16,10 @@ import com.zane.system.service.ISysRoleService;
 @Component
 public class SysPermissionService
 {
-    @Autowired
+    @Resource
     private ISysRoleService roleService;
 
-    @Autowired
+    @Resource
     private ISysMenuService menuService;
 
     /**

@@ -4,7 +4,7 @@ import com.zane.generator.domain.GenTable;
 import com.zane.generator.service.IGenTableService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -18,7 +18,7 @@ import java.util.List;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = SpringAppTest.class)
 @ActiveProfiles("local")
 public class ApplicationTest {
-    @Autowired
+    @Resource
     @Qualifier("genTableServiceImpl")
     private IGenTableService genTableService;
 

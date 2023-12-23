@@ -9,7 +9,7 @@ import com.zane.common.utils.StringUtils;
 import com.zane.system.mapper.SysDictDataMapper;
 import com.zane.system.mapper.SysDictTypeMapper;
 import com.zane.system.service.ISysDictTypeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
@@ -23,10 +23,10 @@ import java.util.List;
 @Service
 public class SysDictTypeServiceImpl implements ISysDictTypeService
 {
-    @Autowired
+    @Resource
     private SysDictTypeMapper dictTypeMapper;
 
-    @Autowired
+    @Resource
     private SysDictDataMapper dictDataMapper;
 
     /**

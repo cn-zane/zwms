@@ -6,7 +6,7 @@ import com.zane.common.utils.SecurityUtils;
 import com.zane.common.utils.StringUtils;
 import com.zane.framework.web.service.TokenService;
 import org.slf4j.MDC;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -31,7 +31,7 @@ import java.util.concurrent.locks.ReentrantLock;
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     private Lock lock = new ReentrantLock();
-    @Autowired
+    @Resource
     private TokenService tokenService;
 
     @Override

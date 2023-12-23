@@ -13,7 +13,7 @@ import com.zane.system.domain.vo.MetaVo;
 import com.zane.system.domain.vo.RouterVo;
 import com.zane.system.mapper.SysRoleMapper;
 import com.zane.system.service.ISysMenuService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.zane.common.constant.Constants;
 import com.zane.common.constant.UserConstants;
@@ -36,13 +36,13 @@ public class SysMenuServiceImpl implements ISysMenuService
 {
     public static final String PREMISSION_STRING = "perms[\"{0}\"]";
 
-    @Autowired
+    @Resource
     private SysMenuMapper menuMapper;
 
-    @Autowired
+    @Resource
     private SysRoleMapper roleMapper;
 
-    @Autowired
+    @Resource
     private SysRoleMenuMapper roleMenuMapper;
 
     /**

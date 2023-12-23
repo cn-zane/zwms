@@ -6,7 +6,7 @@ import com.zane.system.domain.SysPost;
 import com.zane.system.mapper.SysPostMapper;
 import com.zane.system.mapper.SysUserPostMapper;
 import com.zane.system.service.ISysPostService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.zane.common.constant.UserConstants;
 import com.zane.common.exception.ServiceException;
@@ -20,10 +20,10 @@ import com.zane.common.utils.StringUtils;
 @Service
 public class SysPostServiceImpl implements ISysPostService
 {
-    @Autowired
+    @Resource
     private SysPostMapper postMapper;
 
-    @Autowired
+    @Resource
     private SysUserPostMapper userPostMapper;
 
     /**

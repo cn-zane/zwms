@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.zane.framework.manager.AsyncManager;
 import com.zane.framework.web.service.TokenService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
@@ -28,7 +28,7 @@ import com.zane.framework.manager.factory.AsyncFactory;
 @Configuration
 public class LogoutSuccessHandlerImpl implements LogoutSuccessHandler
 {
-    @Autowired
+    @Resource
     private TokenService tokenService;
 
     /**

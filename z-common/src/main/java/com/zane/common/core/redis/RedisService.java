@@ -1,6 +1,6 @@
 package com.zane.common.core.redis;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class RedisService {
-    @Autowired
+    @Resource
     private RedisCache redisCache;
 
     public void setMatchList(Long userId, List<Long> userIds) {

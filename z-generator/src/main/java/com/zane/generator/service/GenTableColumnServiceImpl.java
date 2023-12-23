@@ -3,7 +3,7 @@ package com.zane.generator.service;
 import java.util.List;
 
 import com.zane.generator.mapper.GenTableColumnMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.zane.common.core.text.Convert;
 import com.zane.generator.domain.GenTableColumn;
@@ -16,7 +16,7 @@ import com.zane.generator.domain.GenTableColumn;
 @Service
 public class GenTableColumnServiceImpl implements IGenTableColumnService
 {
-	@Autowired
+	@Resource
 	private GenTableColumnMapper genTableColumnMapper;
 
 	/**

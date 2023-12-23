@@ -3,7 +3,7 @@ package com.zane.web.core.config;
 import com.zane.common.config.ZWmsConfig;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,7 @@ import java.util.List;
 public class SwaggerConfig
 {
     /** 系统基础配置 */
-    @Autowired
+    @Resource
     private ZWmsConfig zaneConfig;
 
     /** 是否开启swagger */

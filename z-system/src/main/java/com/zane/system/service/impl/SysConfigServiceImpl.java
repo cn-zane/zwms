@@ -11,7 +11,7 @@ import com.zane.common.utils.StringUtils;
 import com.zane.system.domain.SysConfig;
 import com.zane.system.mapper.SysConfigMapper;
 import com.zane.system.service.ISysConfigService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.Collection;
@@ -25,10 +25,10 @@ import java.util.List;
 @Service
 public class SysConfigServiceImpl implements ISysConfigService
 {
-    @Autowired
+    @Resource
     private SysConfigMapper configMapper;
 
-    @Autowired
+    @Resource
     private RedisCache redisCache;
 
     /**

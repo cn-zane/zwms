@@ -3,7 +3,7 @@ package com.zane.system.service.impl;
 import java.util.List;
 
 import com.zane.system.service.ISysLogininforService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.zane.system.domain.SysLogininfor;
 import com.zane.system.mapper.SysLogininforMapper;
@@ -17,7 +17,7 @@ import com.zane.system.mapper.SysLogininforMapper;
 public class SysLogininforServiceImpl implements ISysLogininforService
 {
 
-    @Autowired
+    @Resource
     private SysLogininforMapper logininforMapper;
 
     /**

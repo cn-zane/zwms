@@ -3,7 +3,7 @@ package ${fullPackage};
 #foreach ($import in $importList)
 import ${import};
 #end
-import Excel;
+import com.zane.common.annotation.Excel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 #if(${table.audit} == 1)
 import ${env.baseAudit};

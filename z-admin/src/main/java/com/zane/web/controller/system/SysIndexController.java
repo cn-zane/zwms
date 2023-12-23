@@ -1,6 +1,6 @@
 package com.zane.web.controller.system;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.zane.common.config.ZWmsConfig;
@@ -15,7 +15,7 @@ import com.zane.common.utils.StringUtils;
 public class SysIndexController
 {
     /** 系统基础配置 */
-    @Autowired
+    @Resource
     private ZWmsConfig zaneConfig;
 
     /**

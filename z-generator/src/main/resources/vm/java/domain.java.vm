@@ -3,7 +3,7 @@ package ${fullPackage};
 #foreach ($import in $importList)
 import ${import};
 #end
-import Excel;
+import com.zane.common.annotation.Excel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 #if(($table.crud || $table.sub) && $table.audit == 1)

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import com.zane.system.mapper.SysDeptMapper;
 import com.zane.system.mapper.SysRoleMapper;
 import com.zane.system.service.ISysDeptService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.zane.common.annotation.DataScope;
 import com.zane.common.constant.UserConstants;
@@ -30,10 +30,10 @@ import com.zane.common.utils.spring.SpringUtils;
 @Service
 public class SysDeptServiceImpl implements ISysDeptService
 {
-    @Autowired
+    @Resource
     private SysDeptMapper deptMapper;
 
-    @Autowired
+    @Resource
     private SysRoleMapper roleMapper;
 
     /**

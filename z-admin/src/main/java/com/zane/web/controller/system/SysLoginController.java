@@ -10,7 +10,7 @@ import com.zane.common.utils.SecurityUtils;
 import com.zane.framework.web.service.SysLoginService;
 import com.zane.framework.web.service.SysPermissionService;
 import com.zane.system.service.ISysMenuService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,11 +26,11 @@ import java.util.Set;
  */
 @RestController
 public class SysLoginController {
-    @Autowired
+    @Resource
     private SysLoginService loginService;
-    @Autowired
+    @Resource
     private ISysMenuService menuService;
-    @Autowired
+    @Resource
     private SysPermissionService permissionService;
 
     /**

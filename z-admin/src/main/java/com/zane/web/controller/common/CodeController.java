@@ -3,7 +3,7 @@ package com.zane.web.controller.common;
 import com.zane.common.core.controller.BaseController;
 import com.zane.common.core.domain.AjaxResult;
 import com.zane.system.service.PhoneCodeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CodeController extends BaseController {
     @Value("${zane.traceIdName}")
     private String traceIdName;
-    @Autowired
+    @Resource
     private PhoneCodeService phoneCodeService;
 
     @GetMapping("/get")

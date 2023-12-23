@@ -1,7 +1,7 @@
 package com.zane.quartz.controller;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +26,7 @@ import com.zane.quartz.service.ISysJobLogService;
 @RequestMapping("/monitor/jobLog")
 public class SysJobLogController extends BaseController
 {
-    @Autowired
+    @Resource
     private ISysJobLogService jobLogService;
 
     /**

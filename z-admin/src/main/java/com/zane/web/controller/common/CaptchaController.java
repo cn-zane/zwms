@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,14 +33,14 @@ public class CaptchaController
     @Resource(name = "captchaProducerMath")
     private Producer captchaProducerMath;
 
-    @Autowired
+    @Resource
     private RedisCache redisCache;
 
     // 验证码类型
     @Value("${zane.captchaType}")
     private String captchaType;
 
-    @Autowired
+    @Resource
     private ISysConfigService configService;
     /**
      * 生成验证码

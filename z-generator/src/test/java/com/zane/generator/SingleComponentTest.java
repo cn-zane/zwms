@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
@@ -30,7 +30,7 @@ public class SingleComponentTest {
     @MockBean
     private GenTableColumnMapper genTableColumnMapper;
 
-    @Autowired
+    @Resource
     private IGenTableService genTableService;
 
     private String tableName = "sys_dept";

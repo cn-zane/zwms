@@ -2,11 +2,10 @@ package com.zane.framework.config;
 
 import com.zane.common.core.mybatis.MybatisAutoSetUserAuditInfoInterceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
@@ -28,7 +27,7 @@ import java.util.List;
 @Configuration
 public class MyBatisConfig
 {
-    @Autowired
+    @Resource
     private Environment env;
 
     static final String DEFAULT_RESOURCE_PATTERN = "**/*.class";
@@ -45,11 +44,11 @@ public class MyBatisConfig
                 List<String> result = new ArrayList<String>();
                 aliasesPackage = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX
                         + ClassUtils.convertClassNameToResourcePath(aliasesPackage.trim()) + "/" + DEFAULT_RESOURCE_PATTERN;
-                Resource[] resources = resolver.getResources(aliasesPackage);
+                org.springframework.core.io.Resource[] resources = resolver.getResources(aliasesPackage);
                 if (resources != null && resources.length > 0)
                 {
                     MetadataReader metadataReader = null;
-                    for (Resource resource : resources)
+                    for (org.springframework.core.io.Resource resource : resources)
                     {
                         if (resource.isReadable())
                         {
@@ -90,14 +89,14 @@ public class MyBatisConfig
     public Resource[] resolveMapperLocations(String[] mapperLocations)
     {
         ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
-        List<Resource> resources = new ArrayList<Resource>();
+        List<org.springframework.core.io.Resource> resources = new ArrayList<>();
         if (mapperLocations != null)
         {
             for (String mapperLocation : mapperLocations)
             {
                 try
                 {
-                    Resource[] mappers = resourceResolver.getResources(mapperLocation);
+                    org.springframework.core.io.Resource[] mappers = resourceResolver.getResources(mapperLocation);
                     resources.addAll(Arrays.asList(mappers));
                 }
                 catch (IOException e)

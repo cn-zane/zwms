@@ -1,10 +1,9 @@
 package com.zane.wms.convert;
 
-import com.zane.wms.pojo.dto.CarrierDTO;
-import com.zane.wms.pojo.vo.CarrierVO;
 import org.mapstruct.Mapper;
 import com.zane.wms.domain.Carrier;
-
+import com.zane.wms.pojo.dto.CarrierDTO;
+import com.zane.wms.pojo.vo.CarrierVO;
 import java.util.List;
 /**
  * 承运商  DO <=> DTO <=> VO / BO / Query

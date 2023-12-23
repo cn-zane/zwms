@@ -2,7 +2,7 @@ package com.zane.web.controller.system;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +26,10 @@ import com.zane.system.service.ISysDictTypeService;
 @RequestMapping("/system/dict/data")
 public class SysDictDataController extends BaseController
 {
-    @Autowired
+    @Resource
     private ISysDictDataService dictDataService;
 
-    @Autowired
+    @Resource
     private ISysDictTypeService dictTypeService;
 
     @PreAuthorize("@ss.hasPermi('system:dict:list')")

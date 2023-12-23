@@ -3,7 +3,7 @@ package com.zane.framework.config;
 import com.zane.common.config.ZWmsConfig;
 import com.zane.common.constant.Constants;
 import com.zane.framework.interceptor.RepeatSubmitInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class ResourcesConfig implements WebMvcConfigurer
 {
-    @Autowired
+    @Resource
     private RepeatSubmitInterceptor repeatSubmitInterceptor;
 
     @Override
