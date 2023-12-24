@@ -1,7 +1,10 @@
 package com.zane.wms.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
+import com.zane.common.core.domain.entity.SysDictData;
+import com.zane.common.core.domain.vo.SelectOption;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.PageImpl;
@@ -49,6 +52,13 @@ public class WarehouseController extends BaseController {
     public ResponseEntity<Page<Warehouse>> list(@RequestBody WarehouseQuery query, Pageable page) {
         List<Warehouse> list = service.selectList(query, page);
         return ResponseEntity.ok(new PageImpl<>(list, page, ((com.github.pagehelper.Page)list).getTotal()));
+    }
+    
+    @ApiOperation("查询所有仓库列表")
+    @PreAuthorize("@ss.hasPermi('wms:warehouse:allList')")
+    @PostMapping("/getAllWarehouseList")
+    public List<SelectOption> getAllWarehouseList(@RequestBody WarehouseQuery query) {
+        return service.selectAllList();
     }
 
     @ApiOperation("导出仓库列表")

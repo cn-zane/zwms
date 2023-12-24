@@ -1,19 +1,21 @@
 package com.zane.wms.service;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
-import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.github.pagehelper.PageHelper;
+import java.util.stream.Collectors;
+
 import javax.annotation.Resource;
 
-import com.zane.common.utils.SecurityUtils;
-import org.springframework.data.domain.Pageable;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import com.zane.wms.mapper.WarehouseMapper;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.github.pagehelper.PageHelper;
+import com.zane.common.core.domain.vo.SelectOption;
+import com.zane.common.utils.SecurityUtils;
 import com.zane.wms.domain.Warehouse;
+import com.zane.wms.mapper.WarehouseMapper;
 import com.zane.wms.pojo.query.WarehouseQuery;
 
 /**
@@ -49,7 +51,7 @@ public class WarehouseService {
             PageHelper.startPage(page.getPageNumber() + 1, page.getPageSize());
         }
         QueryWrapper<Warehouse> qw = new QueryWrapper<>();
-        qw.eq("del_flag",0);
+        qw.eq("del_flag", 0);
         String warehouseNo = query.getWarehouseNo();
         if (!StringUtils.isEmpty(warehouseNo)) {
             qw.eq("warehouse_no", warehouseNo);
@@ -104,4 +106,22 @@ public class WarehouseService {
         Long[] ids = {id};
         return warehouseMapper.updateDelFlagByIds(ids);
     }
+
+    /**
+     * 查询所有仓库信息.
+     *
+     * @return {@link List }<{@link Warehouse }>
+     * @author cn_zane@outlook.com
+     * @date 2023/12/24
+     */
+    public List<SelectOption> selectAllList() {
+        List<Warehouse> warehouses = warehouseMapper.selectList(new QueryWrapper<>());
+        return warehouses.stream().map(item -> {
+            SelectOption selectOption = new SelectOption();
+            selectOption.setLabel(item.getWarehouseName());
+            selectOption.setValue(String.valueOf(item.getId()));
+            return selectOption;
+        }).collect(Collectors.toList());
+    }
+
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zane.wms.mapper.MatMapper">
+    
+    <resultMap type="Mat" id="MatResult">
+        <result property="id" column="id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="matNo" column="mat_no"/>
+        <result property="matName" column="mat_name"/>
+        <result property="specification" column="specification"/>
+        <result property="matType" column="mat_type"/>
+        <result property="unit" column="unit"/>
+        <result property="unitPrice" column="unit_price"/>
+        <result property="warehouseId" column="warehouse_id"/>
+        <result property="quantity" column="quantity"/>
+        <result property="productionDate" column="production_date"/>
+        <result property="expiryDate" column="expiry_date"/>
+        <result property="batch" column="batch"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <sql id="selectMatVo">
+        select id, create_by, create_time, update_by, update_time, mat_no, mat_name, specification, mat_type, unit, unit_price, warehouse_id, quantity, production_date, expiry_date, batch, del_flag, remark  from wms_base_mat
+    </sql>
+
+    <select id="selectByEntity" parameterType="Mat" resultMap="MatResult">
+        <include refid="selectMatVo"/>
+        <where>  
+            <if test="matNo != null  and matNo != ''"> and mat_no = #{matNo}</if>
+            <if test="matName != null  and matName != ''"> and mat_name like concat('%', #{matName}, '%')</if>
+            <if test="specification != null  and specification != ''"> and specification = #{specification}</if>
+            <if test="matType != null  and matType != ''"> and mat_type = #{matType}</if>
+            <if test="unit != null  and unit != ''"> and unit = #{unit}</if>
+            <if test="unitPrice != null "> and unit_price = #{unitPrice}</if>
+            <if test="warehouseId != null  and warehouseId != ''"> and warehouse_id = #{warehouseId}</if>
+            <if test="quantity != null "> and quantity = #{quantity}</if>
+            <if test="productionDate != null "> and production_date = #{productionDate}</if>
+            <if test="expiryDate != null "> and expiry_date = #{expiryDate}</if>
+            <if test="batch != null  and batch != ''"> and batch = #{batch}</if>
+        </where>
+    </select>
+
+    <update id="updateDelFlagByIds">
+        update wms_base_mat set del_flag=1
+        <where>
+            id in <foreach collection="ids" open="(" item="it" close=")" separator=",">#{it}</foreach>
+        </where>
+    </update>
+</mapper>
