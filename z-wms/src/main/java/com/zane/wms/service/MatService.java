@@ -54,7 +54,7 @@ public class MatService {
         if (!StringUtils.isEmpty(matNo)) {
             qw.eq("mat_no", matNo);
         }
-        String matNameLike = query.getMatNameLike();
+        String matNameLike = query.getMatName();
         if (!StringUtils.isEmpty(matNameLike)) {
             qw.like("mat_name", matNameLike);
         }

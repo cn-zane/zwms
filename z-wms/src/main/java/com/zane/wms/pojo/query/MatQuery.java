@@ -18,7 +18,7 @@ public class MatQuery {
     private String matNo;
 
     @ApiModelProperty("物料名称 精确匹配")
-    private String matNameLike;
+    private String matName;
 
     @ApiModelProperty("规格 精确匹配")
     private String specification;
