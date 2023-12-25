@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zane.wms.mapper.OutStockBillMapper">
+    
+    <resultMap type="OutStockBill" id="OutStockBillResult">
+        <result property="id" column="id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="outStockBillNo" column="out_stock_bill_no"/>
+        <result property="outStockType" column="out_stock_type"/>
+        <result property="orderNo" column="order_no"/>
+        <result property="customerId" column="customer_id"/>
+        <result property="receivableAmount" column="receivable_amount"/>
+        <result property="outStockStatus" column="out_stock_status"/>
+        <result property="checkStatus" column="check_status"/>
+        <result property="checkUserId" column="check_user_id"/>
+        <result property="checkTime" column="check_time"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <sql id="selectOutStockBillVo">
+        select id, create_by, create_time, update_by, update_time, out_stock_bill_no, out_stock_type, order_no, customer_id, receivable_amount, out_stock_status, check_status, check_user_id, check_time, del_flag, remark  from wms_out_stock_bill
+    </sql>
+
+    <select id="selectByEntity" parameterType="OutStockBill" resultMap="OutStockBillResult">
+        <include refid="selectOutStockBillVo"/>
+        <where>  
+            <if test="outStockBillNo != null  and outStockBillNo != ''"> and out_stock_bill_no = #{outStockBillNo}</if>
+            <if test="outStockType != null "> and out_stock_type = #{outStockType}</if>
+            <if test="orderNo != null  and orderNo != ''"> and order_no = #{orderNo}</if>
+            <if test="outStockStatus != null "> and out_stock_status = #{outStockStatus}</if>
+        </where>
+    </select>
+
+    <update id="updateDelFlagByIds">
+        update wms_out_stock_bill set del_flag=1
+        <where>
+            id in <foreach collection="ids" open="(" item="it" close=")" separator=",">#{it}</foreach>
+        </where>
+    </update>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zane.wms.mapper.OutStockBillDetailMapper">
+    
+    <resultMap type="OutStockBillDetail" id="OutStockBillDetailResult">
+        <result property="id" column="id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="outStockBillId" column="out_stock_bill_id"/>
+        <result property="itemId" column="item_id"/>
+        <result property="planQuantity" column="plan_quantity"/>
+        <result property="realQuantity" column="real_quantity"/>
+        <result property="money" column="money"/>
+        <result property="warehouseId" column="warehouse_id"/>
+        <result property="outStockStatus" column="out_stock_status"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <sql id="selectOutStockBillDetailVo">
+        select id, create_by, create_time, update_by, update_time, out_stock_bill_id, item_id, plan_quantity, real_quantity, money, warehouse_id, out_stock_status, del_flag, remark  from wms_out_stock_bill_detail
+    </sql>
+
+    <select id="selectByEntity" parameterType="OutStockBillDetail" resultMap="OutStockBillDetailResult">
+        <include refid="selectOutStockBillDetailVo"/>
+        <where>  
+            <if test="outStockBillId != null "> and out_stock_bill_id = #{outStockBillId}</if>
+            <if test="itemId != null "> and item_id = #{itemId}</if>
+            <if test="warehouseId != null "> and warehouse_id = #{warehouseId}</if>
+            <if test="outStockStatus != null "> and out_stock_status = #{outStockStatus}</if>
+        </where>
+    </select>
+
+    <update id="updateDelFlagByIds">
+        update wms_out_stock_bill_detail set del_flag=1
+        <where>
+            id in <foreach collection="ids" open="(" item="it" close=")" separator=",">#{it}</foreach>
+        </where>
+    </update>
+</mapper>
