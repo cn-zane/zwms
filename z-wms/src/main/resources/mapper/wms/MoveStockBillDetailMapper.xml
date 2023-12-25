@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zane.wms.mapper.MoveStockBillDetailMapper">
+    
+    <resultMap type="MoveStockBillDetail" id="MoveStockBillDetailResult">
+        <result property="id" column="id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="moveStockId" column="move_stock_id"/>
+        <result property="itemId" column="item_id"/>
+        <result property="planQuantity" column="plan_quantity"/>
+        <result property="realQuantity" column="real_quantity"/>
+        <result property="outWarehouseId" column="out_warehouse_id"/>
+        <result property="inWarehouseId" column="in_warehouse_id"/>
+        <result property="moveStatus" column="move_status"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <sql id="selectMoveStockBillDetailVo">
+        select id, create_by, create_time, update_by, update_time, move_stock_id, item_id, plan_quantity, real_quantity, out_warehouse_id, in_warehouse_id, move_status, del_flag, remark  from wms_move_stock_bill_detail
+    </sql>
+
+    <select id="selectByEntity" parameterType="MoveStockBillDetail" resultMap="MoveStockBillDetailResult">
+        <include refid="selectMoveStockBillDetailVo"/>
+        <where>  
+            <if test="moveStockId != null "> and move_stock_id = #{moveStockId}</if>
+            <if test="itemId != null "> and item_id = #{itemId}</if>
+            <if test="outWarehouseId != null "> and out_warehouse_id = #{outWarehouseId}</if>
+            <if test="inWarehouseId != null "> and in_warehouse_id = #{inWarehouseId}</if>
+            <if test="moveStatus != null "> and move_status = #{moveStatus}</if>
+        </where>
+    </select>
+
+    <update id="updateDelFlagByIds">
+        update wms_move_stock_bill_detail set del_flag=1
+        <where>
+            id in <foreach collection="ids" open="(" item="it" close=")" separator=",">#{it}</foreach>
+        </where>
+    </update>
+</mapper>
