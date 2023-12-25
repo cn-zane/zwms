@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zane.wms.mapper.InStockBillDetailMapper">
+    
+    <resultMap type="InStockBillDetail" id="InStockBillDetailResult">
+        <result property="id" column="id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="inStockBillId" column="in_stock_bill_id"/>
+        <result property="matId" column="mat_id"/>
+        <result property="planQuantity" column="plan_quantity"/>
+        <result property="realQuantity" column="real_quantity"/>
+        <result property="money" column="money"/>
+        <result property="warehouseId" column="warehouse_id"/>
+        <result property="inStockStatus" column="in_stock_status"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <sql id="selectInStockBillDetailVo">
+        select id, create_by, create_time, update_by, update_time, in_stock_bill_id, mat_id, plan_quantity, real_quantity, money, warehouse_id, in_stock_status, del_flag, remark  from wms_in_stock_bill_detail
+    </sql>
+
+    <select id="selectByEntity" parameterType="InStockBillDetail" resultMap="InStockBillDetailResult">
+        <include refid="selectInStockBillDetailVo"/>
+        <where>  
+            <if test="inStockBillId != null "> and in_stock_bill_id = #{inStockBillId}</if>
+            <if test="matId != null "> and mat_id = #{matId}</if>
+            <if test="planQuantity != null "> and plan_quantity = #{planQuantity}</if>
+            <if test="realQuantity != null "> and real_quantity = #{realQuantity}</if>
+            <if test="money != null "> and money = #{money}</if>
+            <if test="warehouseId != null  and warehouseId != ''"> and warehouse_id = #{warehouseId}</if>
+            <if test="inStockStatus != null "> and in_stock_status = #{inStockStatus}</if>
+        </where>
+    </select>
+
+    <update id="updateDelFlagByIds">
+        update wms_in_stock_bill_detail set del_flag=1
+        <where>
+            id in <foreach collection="ids" open="(" item="it" close=")" separator=",">#{it}</foreach>
+        </where>
+    </update>
+</mapper>
