@@ -9,6 +9,12 @@ import com.zane.common.utils.StringUtils;
  */
 public class EscapeUtil
 {
+    /**
+     * 构造器私有化
+     */
+    private EscapeUtil() {
+    }
+
     public static final String RE_HTML_MARK = "(<[^<]*?>)|(<[\\s]*?/[^<]*?>)|(<[^<]*?/[\\s]*?>)";
 
     private static final char[][] TEXT = new char[64][];
@@ -140,16 +146,5 @@ public class EscapeUtil
             }
         }
         return tmp.toString();
-    }
-
-    public static void main(String[] args)
-    {
-        String html = "<script>alert(1);</script>";
-        // String html = "<scr<script>ipt>alert(\"XSS\")</scr<script>ipt>";
-        // String html = "<123";
-        // String html = "123>";
-        System.out.println(EscapeUtil.clean(html));
-        System.out.println(EscapeUtil.escape(html));
-        System.out.println(EscapeUtil.unescape(html));
     }
 }

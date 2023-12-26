@@ -1,13 +1,13 @@
-package com.zane.wms2;
+package com.zane.wms;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WmsApplicationTests {
+class WmsTests {
 
     @Test
-    void contextLoads() {
+    void test01() {
     }
 
 }

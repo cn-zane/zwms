@@ -13,6 +13,6 @@ public class ZWmsServletInitializer extends SpringBootServletInitializer
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application)
     {
-        return application.sources(ZWmsYiApplication.class);
+        return application.sources(ZWmsApplication.class);
     }
 }

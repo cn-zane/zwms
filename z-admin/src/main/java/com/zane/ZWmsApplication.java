@@ -1,5 +1,6 @@
 package com.zane;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -13,10 +14,11 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
         exclude = {DataSourceAutoConfiguration.class},
         scanBasePackages = {"com.zane", "com.zane"}
 )
-public class ZWmsYiApplication {
+@Slf4j
+public class ZWmsApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ZWmsYiApplication.class, args);
-        System.out.println("\n" +
+        SpringApplication.run(ZWmsApplication.class, args);
+        log.info("\n" +
                 "__/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\__/\\\\\\______________/\\\\\\__/\\\\\\\\____________/\\\\\\\\_____/\\\\\\\\\\\\\\\\\\\\\\___        \n" +
                 " _\\////////////\\\\\\__\\/\\\\\\_____________\\/\\\\\\_\\/\\\\\\\\\\\\________/\\\\\\\\\\\\___/\\\\\\/////////\\\\\\_       \n" +
                 "  ___________/\\\\\\/___\\/\\\\\\_____________\\/\\\\\\_\\/\\\\\\//\\\\\\____/\\\\\\//\\\\\\__\\//\\\\\\______\\///__      \n" +
