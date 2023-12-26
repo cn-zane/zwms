@@ -7,8 +7,7 @@ import com.zane.common.exception.ServiceException;
 import com.zane.common.exception.WmsServiceException;
 import com.zane.common.exception.base.BaseException;
 import com.zane.common.utils.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -24,8 +23,8 @@ import javax.servlet.http.HttpServletRequest;
  * @author zane
  */
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
-    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
      * 权限校验异常
